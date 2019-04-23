@@ -57,7 +57,7 @@ public class StarWarsAPITests {
   
   @Test
   public void GetLastPageResult() {
-    String pageNumber = "1";
+    String pageNumber = "7";
     String previous = "https://swapi.co/api/planets/?page=6";
     String firstPlanetName = "Jakku";
     
