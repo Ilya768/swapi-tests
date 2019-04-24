@@ -21,7 +21,7 @@ public class StarWarsAPITests {
   Data is hardcoded due to low number of pages. An alternative way to create such a data set is shown 
   at "AltPlanetList" section.*/
   @DataProvider(name="PlanetsListResult")
-  public Object[][] createTestData {
+  public Object[][] createTestData() {
     return new Object[][] {
       {"2", "https://swapi.co/api/planets/?page=1", "https://swapi.co/api/planets/?page=3"},
       {"3", "https://swapi.co/api/planets/?page=2", "https://swapi.co/api/planets/?page=4"},
@@ -32,7 +32,7 @@ public class StarWarsAPITests {
   }
   
   @DataProvider(name="AltPlanetsList")
-  public Object[][] createTestObject {
+  public Object[][] createTestObject() {
     int last = Integer.parseInt(lastPage);
     int dataSize = 3;
     Object[][] dataSet = new Object[last-2][dataSize];
