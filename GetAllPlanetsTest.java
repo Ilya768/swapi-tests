@@ -1,6 +1,7 @@
 package com.swapi.maven.testng;
 
 import org.testng.annotations.Test;
+import TestDataConstructor;
 
 public class StarWarsAPITests {
   private static final String URL = "https://swapi.co/api/planets/";
