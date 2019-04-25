@@ -26,6 +26,18 @@ public class TestDataManager {
       JSONObject result = new JSONObject(jsonString);
       return result;
     }
+    
+    public List<String> structureJsonResponse(JSONObject obj) {
+      List<String> keys = new ArrayList<>();
+      Iterator<String> iterator = obj.keys();
+      
+      while(iterator.hasNext()) {
+        String key = iterator.next();
+        keys.add(key);
+      }
+      
+      return keys;
+    }
   }
   
   public class MutualTestData {
