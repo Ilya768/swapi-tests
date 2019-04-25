@@ -6,7 +6,7 @@ import java.org.json.JSONObject;
 
 public class TestDataManager {
   
-  public class JsonSchemaFetcher {
+  public class JsonResponseProcessor {
     public String getJsonString(String schemaURL) {    
       String url = schemaURL;
       URL urlObject = new URL(url);
@@ -23,7 +23,7 @@ public class TestDataManager {
       return response.toString();
      }
 
-    public JSONObject getResourceSchema(String jsonString) {
+    public JSONObject getJsonObject(String jsonString) {
       JSONObject result = new JSONObject(jsonString);
       return result;
     }
