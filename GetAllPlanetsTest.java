@@ -1,21 +1,17 @@
 package com.swapi.maven.testng;
 
 import org.testng.annotations.Test;
-import TestDataConstructor;
+import TestDataConstructor.TestDataManager.JsonSchemaFetcher;
+import TestDataConstructor.TestDataManager.MutualDataSet;
+import TestDataConstructor.TestDataManager.FirstPageDataSet;
+import TestDataConstructor.TestDataManager.LastPageDataSet;
 
 public class StarWarsAPITests {
-  private static final String URL = "https://swapi.co/api/planets/";
-  private static final String firstPage = "1";
-  private static final String nextFromFirstPage = "https://swapi.co/api/planets/?page=2";
-  private static final String firstPlanetName = "Alderaan";
   
-  private static final int allPlanets = 61;
-  private static final int resultsPerPage = 10;
-  
-  private static final String lastPage = "7";
-  private static final int resulsNumberAtLastPage = 1;
-  private static final String lastPlanetName = "Jakku";
-  private static final String previousFromLastPage = "https://swapi.co/api/planets/?page=6";
+  MutualDataSet mutualData = new MutualDataSet();
+  int allPlanets = mutualData.getAllResultsValue();
+  int resultsPerPage = mutualData.getResultsPerPageValue();
+  String URL = mutualData.getBaseUrl();
   
   /*Data set below represents the basic information about page results structure and returns a two demantional array
   type of Object with 3 values per row in following pattern: "Page Number", "Previous Page URL", "Next Page URL". 
@@ -58,6 +54,11 @@ public class StarWarsAPITests {
   
   @Test
   public void GetFirstPageResult() {
+    FirstPageDataSet firstPage = new FirstPageDataSet();
+    String pageNumber = firstPage.getFirstPageValue();
+    String nextFromFirstPage = firstPage.getNextPageUrl();
+    String planetName = firstPage.getPlanetName();
+    
     given().pathParam("number", firstPage).when().
       get(URL + "?page={number}").
     then().
@@ -82,7 +83,13 @@ public class StarWarsAPITests {
   }
   
   @Test
-  public void GetLastPageResult() {    
+  public void GetLastPageResult() {
+    LastPageDataSet lastPage = new LastPageDataSet();
+    String pageNumber = lastPage.getLastPageValue();
+    String previousFromLastPage = lastPage.getPreviousPageUrl();
+    String planetName = lastPage.getLastPlanetName();
+    int resultsNumberAtLastPage = lastPage.getLastPageResultsNumber();
+    
     given().pathParam("number", lastPage).when().
       get(URL + "?page={number}").
     then().
