@@ -8,8 +8,7 @@ public class TestDataManager {
   
   public class JsonResponseProcessor {
     public String getJsonString(String schemaURL) {    
-      String url = schemaURL;
-      URL urlObject = new URL(url);
+      URL urlObject = new URL(schemaURL);
       HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
       InputStreamReader stream = new InputStreamReader(connection.getInputStream());
       BufferedReader in = new BufferedReader(stream);
